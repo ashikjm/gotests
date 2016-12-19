@@ -42,7 +42,12 @@ func (fn appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func Main() {
-	err := migrate_db()
+	err := DBConnect()
+	if err != nil {
+		fmt.Errorf("Couldn't connect to DB")
+	}
+
+	err = migrate_db()
 	if err != nil {
 		fmt.Errorf("Couldn't connect to DB")
 	}

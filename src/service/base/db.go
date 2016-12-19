@@ -35,20 +35,20 @@ func migrate_db() error {
 //	return "Maintenance"
 //}
 
-//func DBConnect() (err error)  {
-//	db , err := gorm.Open("mysql","root:root@tcp(localhost:3306)/maint")
-//	if err != nil {
-//		return fmt.Errorf("Failed to connect to DB")
-//	}
-//	err = db.DB().Ping()
-//	if err != nil {
-//		panic(err)
-//	}
-//	fmt.Printf("Connected to DB")
-//	return nil
-//}
+func DBConnect() (err error)  {
+	db , err = gorm.Open("mysql","root:root@tcp(localhost:3306)/maint?parseTime=true")
+	if err != nil {
+		return fmt.Errorf("Failed to connect to DB")
+	}
+	err = db.DB().Ping()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Connected to DB")
+	return nil
+}
 
-//func GetDbConnection() (*gorm.DB, error) {
-//	//log.Println("Getting a DB connection")
-//	return db, nil
-//}
+func GetDbConnection() (*gorm.DB, error) {
+	//log.Println("Getting a DB connection")
+	return db, nil
+}

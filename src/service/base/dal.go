@@ -2,7 +2,6 @@ package base
 
 import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"github.com/jinzhu/gorm"
 	"service/common"
 	"fmt"
 )
@@ -14,12 +13,13 @@ import (
 
 func GetAnObject(id string) (*common.Maintenance, error)  {
 	var M common.Maintenance
-	db, err := gorm.Open("mysql","root:root@tcp(localhost:3306)/maint?parseTime=true")
+	//db, err := gorm.Open("mysql","root:root@tcp(localhost:3306)/maint?parseTime=true")
+	db , err := GetDbConnection()
 	if err != nil {
 		return nil, fmt.Errorf("Couldn't connect to DB")
 	}
 	defer db.Close()
-	fmt.Println("%v", id)
+	fmt.Println(id)
 	//db.Where("id = ?", id).Find(&M)
 	db.Find(&M, id)
 	//for _ , k := range(M) {
@@ -35,7 +35,8 @@ func UpdateObjectValue(id int16, value string) error {
 	var M common.Maintenance
 	M.ID = id
 	//M.Status = "scheduled"
-	db, err := gorm.Open("mysql", "root:root@tcp(localhost:3306)/maint?parseTime=true")
+	//db, err := gorm.Open("mysql", "root:root@tcp(localhost:3306)/maint?parseTime=true")
+	db , err := GetDbConnection()
 	if err != nil {
 		return err
 	}
@@ -59,14 +60,14 @@ func UpdateObjectValue(id int16, value string) error {
 }
 
 func CreateMaintenanceObject(M common.Maintenance) (int16, error)  {
-	db, err := gorm.Open("mysql", "root:root@tcp(localhost:3306)/maint?parseTime=true")
-	if err != nil {
-		return 0 , fmt.Errorf("Couldn't connect to mysql")
-	}
-	//db, err := GetDbConnection()
+	//db, err := gorm.Open("mysql", "root:root@tcp(localhost:3306)/maint?parseTime=true")
 	//if err != nil {
-	//	fmt.Println("Couldn't Open")
+	//	return 0 , fmt.Errorf("Couldn't connect to mysql")
 	//}
+	db, err := GetDbConnection()
+	if err != nil {
+		fmt.Println("Couldn't Open")
+	}
 	defer db.Close()
 	//fmt.Printf("%#v",M)
 	//db.Create(&M)

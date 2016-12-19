@@ -9,7 +9,7 @@ import (
 	"github.com/gorilla/mux"
 	//"service/common"
 	"service/common"
-	"github.com/jinzhu/gorm"
+	//"github.com/jinzhu/gorm"
 )
 
 

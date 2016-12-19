@@ -23,7 +23,7 @@ func UpdateRacktables(id int, action string, msg []string) error {
 
 func UpdateStatusRacktables(action string) error  {
 	//ToDo: Below line will be replaced by actions to update the status
-	_, err := fmt.Println("Funtion to perform %s added successfully" ,action)
+	_, err := fmt.Println("Funtion to perform added successfully" ,action)
 	if err != nil {
 		return fmt.Errorf("Couldn't Update")
 	}
@@ -31,7 +31,7 @@ func UpdateStatusRacktables(action string) error  {
 }
 
 func AddRacktablesMessage(msg []string) error {
-	_, err := fmt.Println("Messages added to racktables successfully %v", msg)
+	_, err := fmt.Println("Messages added to racktables successfully", msg)
 	if err != nil {
 		return fmt.Errorf("Couldn't Add the message")
 	}
