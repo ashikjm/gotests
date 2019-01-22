@@ -14,7 +14,7 @@ type js_str struct  {
 	State string `json : "state"`
 }
 func main() {
-	resp, _ := http.Get("http://10.85.43.1:8080/compute/v1/apps/megh/instances/11")
+	resp, _ := http.Get("<url>")
 	b, _ := ioutil.ReadAll(resp.Body)
 	var data interface{}
 	err := json.Unmarshal(b, &data)
