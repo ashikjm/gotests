@@ -38,7 +38,7 @@ func main() {
 //"bar": "foo",
 //"baz": 10.4,
 //}
-	url_get("http://wbuild-0002.nm.flipkart.com:9000/v1/servers/Dell1/events/2")
+	url_get("<url>")
 
 //fmt.Printf("%s\n", type_of_string)
 //fmt.Printf("%#v\n", x)
